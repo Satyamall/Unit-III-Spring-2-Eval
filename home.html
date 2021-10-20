@@ -8,6 +8,7 @@
     <style>
         body{
             margin-top: 20px;
+            text-align: center;
         }
         a{
             margin-top: 10px;
@@ -22,10 +23,7 @@
        h1{
            margin: auto;
            text-align: center;
-           margin-bottom: 20px;
-       }
-       #search{
-           text-align: center;
+           margin: 20px;
        }
        #user{
            padding: 10px;
@@ -49,10 +47,8 @@
 <body>
     <a href="login.html">Login</a>
     <h1>Home Page</h1>
-    <div id="search">
-         <input id="user" type="text" placeholder="users Search"/>
-         <input id="btn" type="submit" value="Search"/>
-    </div>
+    <input id="user" type="text" placeholder="users Search"/>
+    <button id="btn">Search</button>
     <div id="container">
         
     </div>
@@ -60,13 +56,13 @@
     <script>
        
        window.addEventListener("load",()=>{
-           showData();
-            // const btn= document.getElementById("btn");
-            // btn.addEventListener("submit",showData);
+        //    showData();
+            const btn= document.getElementById("btn");
+            btn.addEventListener("click",showData);
        })
 
        const getUserData=(username)=>{
-           return fetch(`https://api.github.com/users/Satyamall/repos`)
+           return fetch(`https://api.github.com/users/${username}/repos`)
            .then(res=>res.json())
        }
 
