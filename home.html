@@ -60,8 +60,31 @@
     <script>
        
        window.addEventListener("load",()=>{
-           
+            const btn= document.getElementById("search");
+            btn.addEventListener("submit",userSearch);
        })
+
+       function userSearch(){
+           const username = document.getElementById("user").value;
+           getUserData(username)
+       }
+       function getUserData(username){
+           return fetch(`https://api.github.com/users/${username}/repos`)
+           .then(res=>res.json())
+           .then(res=>showData(res));
+       }
+
+       function showData(data){
+           const container = document.getElementById("container");
+           container.innerHTML= null;
+           const div = new DocumentFragment();
+           for(const value in data){
+               const results = createCard(value);
+               div.append(results);
+           }
+           container.append(div);
+           
+       }
     </script>
 </body>
 </html>
