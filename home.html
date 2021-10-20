@@ -60,19 +60,20 @@
     <script>
        
        window.addEventListener("load",()=>{
-        //    showData();
-            const btn= document.getElementById("btn");
-            btn.addEventListener("submit",showData);
+           showData();
+            // const btn= document.getElementById("btn");
+            // btn.addEventListener("submit",showData);
        })
 
-       function getUserData(username){
-           return fetch(`https://api.github.com/users/${username}/repos`)
+       const getUserData=(username)=>{
+           return fetch(`https://api.github.com/users/Satyamall/repos`)
            .then(res=>res.json())
        }
 
         async function showData(){
             try{
                 const username = document.getElementById("user").value;
+                console.log(username)
                 const container = document.getElementById("container");
                 container.innerHTML= null;
                 
