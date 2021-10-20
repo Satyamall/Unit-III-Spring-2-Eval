@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        .form-input{
+            margin-bottom: 0.5rem;
+        }
+        .form-input>input{
+            padding: 0.5rem;
+            border: 0.1rem solid red;
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html">Home</a>
+    <h1>Login Page</h1>
+    <form id="login">
+
+        <div class="form-input"><input type="text" placeholder="name" name="name"/></div>
+        <div class="form-input"><input type="text" placeholder="Password" name="password"/></div>
+
+        <div>
+            <input type="submit"/>
+        </div>
+    </form>
+
+    <script>
+
+        window.addEventListener("load",()=>{
+            
+        })
+
+        const handleLoginSubmit = async ()=>{
+            try{
+                event.preventDefault();
+
+                const form = new FormData(event.target);
+                const 
+             }
+        }
+
+        function loginByUser(payload){
+            return fetch(`https://reqres.in/api/login`,{
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res=>res.json())
+        }
+    </script>
+</body>
+</html>
