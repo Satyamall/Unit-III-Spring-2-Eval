@@ -49,10 +49,10 @@
 <body>
     <a href="login.html">Login</a>
     <h1>Home Page</h1>
-    <form id="search">
+    <div id="search">
          <input id="user" type="text" placeholder="users Search"/>
          <input id="btn" type="submit" value="Search"/>
-    </form>
+    </div>
     <div id="container">
         
     </div>
@@ -60,30 +60,53 @@
     <script>
        
        window.addEventListener("load",()=>{
-            const btn= document.getElementById("search");
-            btn.addEventListener("submit",userSearch);
+        //    showData();
+            const btn= document.getElementById("btn");
+            btn.addEventListener("submit",showData);
        })
 
-       function userSearch(){
-           const username = document.getElementById("user").value;
-           getUserData(username)
-       }
        function getUserData(username){
            return fetch(`https://api.github.com/users/${username}/repos`)
            .then(res=>res.json())
-           .then(res=>showData(res));
        }
 
-       function showData(data){
-           const container = document.getElementById("container");
-           container.innerHTML= null;
-           const div = new DocumentFragment();
-           for(const value in data){
-               const results = createCard(value);
-               div.append(results);
-           }
-           container.append(div);
+        async function showData(){
+            try{
+                const username = document.getElementById("user").value;
+                const container = document.getElementById("container");
+                container.innerHTML= null;
+                
+                const data = await getUserData(username);
+                console.log(data);
+                const div = new DocumentFragment();
+                for(const value of data){
+                    const results = createCard(value);
+                    div.append(results);
+                }
+                container.append(div);
+            }
+            catch(err){
+
+            }
+       }
+
+       function createCard(value){
+           const div = document.createElement("div");
+           div.style.border = "1px solid red";
+           div.style.textAlign = "center";
+
+           const t1 = document.createElement("h4");
+           t1.textContent = `User ID : ${value.id}`;
+           const t2 = document.createElement("h4");
+           t2.textContent = `User Name : ${value.name}`;
+           const t3 = document.createElement("h4");
+           t3.textContent = `Owner : ${value.owner.login}`;
+           const t4 = document.createElement("h4");
+           t4.textContent = `Repository Name: ${value.full_name}`;
+        
+           div.append(t1,t2,t3,t4);
            
+           return div
        }
     </script>
 </body>
