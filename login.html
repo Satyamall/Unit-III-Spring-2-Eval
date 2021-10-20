@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <style>
+         body{
+            margin-top: 20px;
+        }
+        a{
+            margin-top: 10px;
+            border: 1px solid red;
+            background-color: brown;
+            font-size: 20px;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            text-decoration: none;
+        }
         .form-input{
             margin-bottom: 0.5rem;
         }
@@ -52,7 +65,10 @@
             localStorage.setItem("username",username);
             localStorage.setItem("password",password);
             alert("Please Click on oK and go to Home page")
-            window.location.replace("home.html");
+            if(username && password)
+            {
+                window.open("home.html")
+            }
         }
     </script>
 </body>

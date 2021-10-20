@@ -6,17 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <style>
+        body{
+            margin-top: 20px;
+        }
+        a{
+            margin-top: 10px;
+            border: 1px solid red;
+            background-color: brown;
+            font-size: 20px;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            text-decoration: none;
+        }
        h1{
            margin: auto;
            text-align: center;
+           margin-bottom: 20px;
+       }
+       #search{
+           text-align: center;
+       }
+       #user{
+           padding: 10px;
+           border: 2px solid brown;
+           border-radius: 20px;
+       }
+       #btn{
+           padding: 10px;
+           border: 2px solid black;
+           border-radius: 20px;
+           background-color: black;
+           color: white;
+       }
+       #container{
+           width: 100%;
+           background-color: black;
+           color: white;
        }
     </style>
 </head>
 <body>
     <a href="login.html">Login</a>
     <h1>Home Page</h1>
+    <form id="search">
+         <input id="user" type="text" placeholder="users Search"/>
+         <input id="btn" type="submit" value="Search"/>
+    </form>
     <div id="container">
-
+        
     </div>
+    
+    <script>
+       
+       window.addEventListener("load",()=>{
+           
+       })
+    </script>
 </body>
 </html>
