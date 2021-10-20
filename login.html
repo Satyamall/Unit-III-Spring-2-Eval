@@ -58,22 +58,29 @@
 
                 const username = document.getElementById("user").value;
                 const password = document.getElementById("password").value;
-
-                loginByUser(username,password);
+                const payload={
+                    username,
+                    password
+                }
+                loginByUser(payload);
              }
              catch(err){
                 console.log(err);
              }
         }
 
-        function loginByUser(username,password){
-            localStorage.setItem("username",username);
-            localStorage.setItem("password",password);
+        function loginByUser(payload){
+            // localStorage.setItem("payload",payload);
+            fetch(`https://reqres.in/api/login`,{
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res=>res.json())
             alert("Please Click on oK and go to Home page")
-            if(username && password)
-            {
-                window.open("home.html")
-            }
+            window.open("home.html")
         }
     </script>
 </body>
